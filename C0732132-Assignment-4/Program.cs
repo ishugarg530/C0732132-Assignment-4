@@ -20,6 +20,7 @@ namespace c0732132_Assihnment_4
             p.ReadTextFile();
             p.Wordfind();
             p.Wordfind2();
+            p.NumLetters();
             Console.ReadKey();
 
 
@@ -115,6 +116,18 @@ namespace c0732132_Assihnment_4
             Console.WriteLine("Total number of Lines which contain fare but not war: "+z);
         }
 
+        public void NumLetters()
+        {
+
+            StreamReader reader = new StreamReader("U:/Users/732132/c0732132-Assignment4/C0732132-Assignment-4/beowulf.txt");
+            string script = reader.ReadToEnd();
+            int num = 0;
+            foreach (char letter in script)
+            { num++;}
+            Console.WriteLine("Total number of letters per word: "+num);
+
+        }
+
 
         public int FindNumberOfBlankSpaces(string line)
         {
@@ -140,14 +153,18 @@ namespace c0732132_Assihnment_4
             
         }
 
-        
-
-         
 
 
-        }
+
+
+
+
+
+
 
     }
+
+}
     
 
 
