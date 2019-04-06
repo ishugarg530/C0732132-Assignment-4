@@ -17,19 +17,44 @@ namespace c0732132_Assihnment_4
             Program p = new Program();
             p.Beowulf = new ArrayList();
             p.ReadTextFiles();
+            p.ReadTextFile();
             p.Wordfind();
+            p.Wordfind2();
             Console.ReadKey();
+
 
         }
         public void Run()
         {
-            this.ReadTextFiles();
+            this.ReadTextFile();
         }
-
         public void ReadTextFiles()
         {
+            // Read file using StramReader. Read file line by line
+            using (StreamReader file = new StreamReader("U:/Users/732132/c0732132-Assignment4/C0732132-Assignment-4/beowulf.txt"))
+            {
+
+                int counter = 0;
+                string ln;
+
+                while ((ln = file.ReadLine()) != null)
+                {
+
+                    Beowulf.Add(ln);
+
+                }
+
+                file.Close();
+                counter = File.ReadLines("U:/Users/732132/c0732132-Assignment4/C0732132-Assignment-4/beowulf.txt").Count();
+                Console.WriteLine($"File has {counter} lines.");
+
+            }
+        }
+
+        public void ReadTextFile()
+        {
             
-            StreamReader reader = new StreamReader("U:/Users/732132/c0732132-Assignment4/C0732132-Assignment-4/beowulf.txt");
+            var reader = new StreamReader("U:/Users/732132/c0732132-Assignment4/C0732132-Assignment-4/beowulf.txt");
             string script = reader.ReadToEnd();
 
             var text = script.Trim();
@@ -50,6 +75,7 @@ namespace c0732132_Assihnment_4
             Console.WriteLine("Total Number of Words are "+ Count);
 
         }
+
         public void Wordfind()
 
         {
@@ -62,11 +88,35 @@ namespace c0732132_Assihnment_4
                 }
 
             }
-            Console.WriteLine("Total words sea and fare in File are:" + chr);
-
-
+            Console.WriteLine("Total number of lines which contains word sea and Fare:" + chr);
         }
-            public int FindNumberOfBlankSpaces(string line)
+
+        public void Wordfind2()
+        {
+            int chr=0, y=0, z = 0;
+            
+            foreach (var line in File.ReadAllLines("U:/Users/732132/c0732132-Assignment4/C0732132-Assignment-4/beowulf.txt"))
+            {
+                if (line.Contains("fare"))
+                {
+                    chr++;
+                }
+
+            }
+            foreach (var line in File.ReadAllLines("U:/Users/732132/c0732132-Assignment4/C0732132-Assignment-4/beowulf.txt"))
+            {
+                if (line.Contains("war") && line.Contains("fare"))
+                {
+                    y++;
+                }
+
+            }
+            z = chr - y;
+            Console.WriteLine("Total number of Lines which contain fare but not war: "+z);
+        }
+
+
+        public int FindNumberOfBlankSpaces(string line)
         {
           
             
