@@ -17,6 +17,7 @@ namespace c0732132_Assihnment_4
             Program p = new Program();
             p.Beowulf = new ArrayList();
             p.ReadTextFiles();
+            p.Wordfind();
             Console.ReadKey();
 
         }
@@ -49,10 +50,23 @@ namespace c0732132_Assihnment_4
             Console.WriteLine("Total Number of Words are "+ Count);
 
         }
-        
+        public void Wordfind()
+
+        {
+            int chr= 0;
+            foreach (var line in File.ReadAllLines("U:/Users/732132/c0732132-Assignment4/C0732132-Assignment-4/beowulf.txt"))
+            {
+                if (line.Contains("sea") && line.Contains("fare"))
+                {
+                  chr++;
+                }
+
+            }
+            Console.WriteLine("Total words sea and fare in File are:" + chr);
 
 
-        public int FindNumberOfBlankSpaces(string line)
+        }
+            public int FindNumberOfBlankSpaces(string line)
         {
           
             
