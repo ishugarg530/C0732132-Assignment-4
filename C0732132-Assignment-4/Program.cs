@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace c0732132_Assihnment_4
 {
@@ -26,44 +27,63 @@ namespace c0732132_Assihnment_4
 
         public void ReadTextFiles()
         {
-            // Read file using StramReader. Read file line by line
-            using (StreamReader file = new StreamReader("U:/Users/732132/c0732132-Assignment4/C0732132-Assignment-4/beowulf.txt"))
+            
+            StreamReader reader = new StreamReader("U:/Users/732132/c0732132-Assignment4/C0732132-Assignment-4/beowulf.txt");
+            string script = reader.ReadToEnd();
+
+            var text = script.Trim();
+            int Count = 0, index = 0;
+
+            while (index < text.Length)
             {
+               
+                while (index < text.Length && !char.IsWhiteSpace(text[index]))
+                    index++;
 
-                int counter = 0;
-                string ln;
-
-                while ((ln = file.ReadLine()) != null)
-                {
-                    
-                    Beowulf.Add(ln);
-                  
-                }
-
-                file.Close();
-                counter = File.ReadLines("U:/Users/732132/c0732132-Assignment4/C0732132-Assignment-4/beowulf.txt").Count();
-                Console.WriteLine($"File has {counter} lines.");
+               Count++;
                 
+                while (index < text.Length && char.IsWhiteSpace(text[index]))
+                    index++;
             }
+
+            Console.WriteLine("Total Number of Words are "+ Count);
+
         }
+        
+
 
         public int FindNumberOfBlankSpaces(string line)
         {
-           
-            int countletters = 0;
-            int countSpaces = 0;
+          
+            
 
-            foreach (char c in line)
-            {
-                if (char.IsLetter(c)) { countletters++; }
+                int countletters = 0;
+                int countSpaces = 0;
 
-                if (char.IsWhiteSpace(c)) { countletters++; }
-            }
-            return countSpaces;
+                foreach (char c in line)
+                {
+                    if (char.IsLetter(c))
+                    {
+                        countletters++;
+                    }
+
+                    if (char.IsWhiteSpace(c))
+                    {
+                        countletters++;
+                    }
+                }
+                return countSpaces;
+            
+        }
+
+        
+
+         
+
 
         }
 
     }
     
-}
+
 
