@@ -42,12 +42,12 @@ namespace c0732132_Assihnment_4
                 {
 
                     Beowulf.Add(ln);
-
+                    Console.WriteLine(ln);
                 }
 
                 file.Close();
                 counter = File.ReadLines("U:/Users/732132/c0732132-Assignment4/C0732132-Assignment-4/beowulf.txt").Count();
-                Console.WriteLine($"File has {counter} lines.");
+                Console.WriteLine($"\n\n\n\n\n\nFile has {counter} lines.");
 
             }
         }
